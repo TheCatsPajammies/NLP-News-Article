@@ -2,18 +2,20 @@ var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 
-
+// bodyparser to read form input and store it as a js object
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// node-fetch for 
 const fetch = require("node-fetch");
 const path = require('path')
 
-
+// cors for cross origin allowance
 const cors = require('cors')
 app.use(cors())
 
+// dotenv to hide api key in environment/.env file
 const dotenv = require('dotenv');
 dotenv.config();
 const API_KEY = process.env.API_KEY;
