@@ -7,9 +7,8 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// node-fetch for 
+// node-fetch for fetch()
 const fetch = require("node-fetch");
-const path = require('path')
 
 // cors for cross origin allowance
 const cors = require('cors')
@@ -20,11 +19,12 @@ const dotenv = require('dotenv');
 dotenv.config();
 const API_KEY = process.env.API_KEY;
 const BASE_URL = 'https://api.meaningcloud.com/sentiment-2.1?';
+let clientData = []
 
 // API_URL = `${BASE_URL}key=${API_KEY}&url=${userInput}`
 
+// instantiate app instance
 const app = express()
-
 app.use(express.static('dist'))
 
 console.log(__dirname)
@@ -42,5 +42,15 @@ app.listen(8081, function () {
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
+// POST Route
+app.post('/api', async function(req, res) {
+    clientData = req.body.url;
+    console.log(clientData);
+    const API_URL = `${BASE_URL}key=${API_KEY}&url=${clientData}`
 
-app.post('')
+    const response = await fetch(API_URL)
+    const meaningCloudRes = await response.json()
+    console.log(meaningCloudRes)
+    res.send(meaningCloudRes)
+})
+
