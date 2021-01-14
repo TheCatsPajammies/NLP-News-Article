@@ -19,6 +19,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const API_KEY = process.env.API_KEY;
 const BASE_URL = 'https://api.meaningcloud.com/sentiment-2.1?';
+const API_URL = `${BASE_URL}key=${API_KEY}&url=${clientData}`
 let clientData = []
 
 // API_URL = `${BASE_URL}key=${API_KEY}&url=${userInput}`
@@ -46,7 +47,6 @@ app.get('/test', function (req, res) {
 app.post('/api', async function(req, res) {
     clientData = req.body.url;
     console.log(clientData);
-    const API_URL = `${BASE_URL}key=${API_KEY}&url=${clientData}`
 
     const response = await fetch(API_URL)
     const meaningCloudRes = await response.json()
