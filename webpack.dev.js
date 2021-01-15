@@ -13,6 +13,7 @@ module.exports = {
     output: {
         libraryTarget: 'var',
         library: 'Client',
+        },
     module: {
         rules: [
             {
@@ -23,6 +24,13 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/i,
+                loader: 'file-loader',
+                options: {
+                    name: '[path][name].[ext]',
+                }
             }
         ]
     },
@@ -39,6 +47,7 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
-        })
+        }),
+        new WorkBoxPlugin.GenerateSW()
     ]
 }
