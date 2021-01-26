@@ -57,6 +57,6 @@ Command | Action
 `npm run build-prod` | Build project
 `npm start` | Run project
 
-8. Open browser at http://localhost:3030/
+7. Open browser at http://localhost:3030/
 
 
