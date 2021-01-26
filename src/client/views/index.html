@@ -2,41 +2,55 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
-        <!--Add Fonts and stuff-->
+        <title>Sentiment Analysis</title>
     </head>
 
     <body>
 
         <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
+            <!-- <nav>
+                <ul class="navbar">
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </nav> -->
         </header>
 
         <main>
+            <img src="https://www.meaningcloud.com/wp-content/themes/textalytics/img_compressed/logo.png">
+            <h1 class="label">Sentiment Analysis</h1>
+            <p>Evaluate an article using the Meaning Cloud API</p>
             <section>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                    <input id="url" type="text" name="input" value="" placeholder="Enter an article URL here">
+                    <input type="submit" name="" value="Submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
             </section>
 
-            <section>
-                <strong>Form Results:</strong>
-                <div class="polarity"></div><!--res.score_tag-->
-                <div class="subjectivity"></div><!--res.subjectivity-->
-                <div class="irony"></div><!--res.irony-->
-                <div class="confidence"></div><!--res.confidence-->
+            <section class="form-results">
+                <!-- feedback class updated dynamically-->
+                <h1><strong>Article Analysis:</strong></h1>
+                <div class="feedback" id="polarity"></div>
+                <div class="feedback" id="agreement"></div>
+                <div class="feedback" id="subjectivity"></div>
+                <div class="feedback" id="confidence"></div>
+                <div class="feedback" id="irony"></div>
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            
         </footer>
 
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
     </body>
 </html>

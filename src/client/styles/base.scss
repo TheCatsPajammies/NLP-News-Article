@@ -1,11 +1,37 @@
 body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     min-height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: orange;
 }
 
 main {
     flex: 2;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    padding: 20px 40px 20px 40px;
+    max-width: 1200px;
+    margin: auto;
+    //border-radius: 5px;
+}
+
+
+h1 {
+    font-size: 40px;
+    text-decoration: underline;
+    padding: 20px;
+}
+
+p {
+    font-size: 20px;
+}
+
+.feedback {
+    padding: 10px;
+    font-size: 20px;
 }
 
 section {
